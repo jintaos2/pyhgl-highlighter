@@ -29,6 +29,12 @@
                     "include": "#class-declaration"
                 },
                 {
+                    "include": "#bundle-declaration"
+                },
+                {
+                    "include": "#module-declaration"
+                },
+                {
                     "include": "#function-declaration"
                 },
                 {
@@ -261,7 +267,7 @@
                 },
                 {
                     "name": "keyword.control.flow.pyhgl",
-                    "match": "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
+                    "match": "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | when | elsewhen | otherwise | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
                 },
                 {
                     "name": "storage.modifier.declaration.pyhgl",
@@ -990,6 +996,60 @@
                 {
                     "name": "meta.class.pyhgl",
                     "begin": "(?x)\n  \\s*(class)\\s+\n    (?=\n      [[:alpha:]_]\\w* \\s* (:|\\()\n    )\n",
+                    "end": "(:)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "storage.type.class.pyhgl"
+                        }
+                    },
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.section.class.begin.pyhgl"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#class-name"
+                        },
+                        {
+                            "include": "#class-inheritance"
+                        }
+                    ]
+                }
+            ]
+        },
+        "bundle-declaration": {
+            "patterns": [
+                {
+                    "name": "meta.class.pyhgl",
+                    "begin": "(?x)\n  \\s*(bundle)\\s+\n    (?=\n      [[:alpha:]_]\\w* \\s* (:|\\()\n    )\n",
+                    "end": "(:)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "storage.type.class.pyhgl"
+                        }
+                    },
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.section.class.begin.pyhgl"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#class-name"
+                        },
+                        {
+                            "include": "#class-inheritance"
+                        }
+                    ]
+                }
+            ]
+        },
+        "module-declaration": {
+            "patterns": [
+                {
+                    "name": "meta.class.pyhgl",
+                    "begin": "(?x)\n  \\s*(module)\\s+\n    (?=\n      [[:alpha:]_]\\w* \\s* (:|\\()\n    )\n",
                     "end": "(:)",
                     "beginCaptures": {
                         "1": {

@@ -106,3 +106,9 @@ ast.With()
 a = re.compile(r"""\d +  # the integral part
                    \.    # the decimal point
                    \d *  # some fractional digits""", re.X)
+
+
+module mymodule(a=1, *args):
+    io = IO()
+
+    

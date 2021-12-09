@@ -2,9 +2,11 @@
     "name": "pyhgl-highlighter",
     "displayName": "pyhgl-highlighter",
     "description": "Syntax highlighter for pyhgl Language",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "license": "MIT",
+    "publisher": "jintaos2",
     "engines": {
-        "vscode": "^1.63.0"
+        "vscode": "*"
     },
     "categories": [
         "Programming Languages"
@@ -32,6 +34,5 @@
         ]
     },
     "devDependencies": {
-        "js-yaml": "^4.1.0"
     }
 }
