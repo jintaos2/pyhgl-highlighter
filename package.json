@@ -1,0 +1,37 @@
+{
+    "name": "pyhgl-highlighter",
+    "displayName": "pyhgl-highlighter",
+    "description": "Syntax highlighter for pyhgl Language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "pyhgl",
+                "aliases": [
+                    "pyhgl",
+                    "pyhgl"
+                ],
+                "extensions": [
+                    ".pyh"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "pyhgl",
+                "scopeName": "source.pyhgl",
+                "path": "./syntaxes/MagicPython.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "js-yaml": "^4.1.0"
+    }
+}
