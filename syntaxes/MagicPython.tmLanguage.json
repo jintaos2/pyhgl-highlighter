@@ -29,9 +29,6 @@
                     "include": "#class-declaration"
                 },
                 {
-                    "include": "#bundle-declaration"
-                },
-                {
                     "include": "#module-declaration"
                 },
                 {
@@ -267,7 +264,7 @@
                 },
                 {
                     "name": "keyword.control.flow.pyhgl",
-                    "match": "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | when | elsewhen | otherwise | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
+                    "match": "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | when | elsewhen | otherwise | priority_case | parallel_case | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
                 },
                 {
                     "name": "storage.modifier.declaration.pyhgl",
@@ -550,10 +547,10 @@
         },
         "assignment-operator": {
             "name": "keyword.operator.assignment.pyhgl",
-            "match": "(?x)\n     <<= | >>= | //= | \\*\\*=\n    | \\+= | -= | /= | @=\n    | \\*= | %= | ~= | \\^= | &= | \\|=\n    | =(?!=)\n"
+            "match": "(?x)\n    \\.= | <~ | ~> | <~> | <<= | >>= | //= | \\*\\*=\n    | \\+= | -= | /= | @=\n    | \\*= | %= | ~= | \\^= | &= | \\|=\n    | =(?!=)\n"
         },
         "operator": {
-            "match": "(?x)\n    \\b(?<!\\.)\n      (?:\n        (and | or | not | in | is)                         (?# 1)\n        |\n        (for | if | else | await | (?:yield(?:\\s+from)?))  (?# 2)\n      )\n    (?!\\s*:)\\b\n\n    | (<< | >> | & | \\| | \\^ | ~)                          (?# 3)\n\n    | (\\*\\* | \\* | \\+ | - | % | // | / | @)                (?# 4)\n\n    | (!= | == | >= | <= | < | >)                          (?# 5)\n",
+            "match": "(?x)\n    \\b(?<!\\.)\n      (?:\n        (and | or | not | in | is)                         (?# 1)\n        |\n        (for | if | else | await | (?:yield(?:\\s+from)?))  (?# 2)\n      )\n    (?!\\s*:)\\b\n\n    | ( <<< | >>> | && | \\|\\| | \\+\\+ |!| << | >> | & | \\| | \\^ | ~)                          (?# 3)\n\n    | (\\*\\* | \\* | \\+ | - | % | // | / | @)                (?# 4)\n\n    | (!= | == | >= | <= | < | >)                          (?# 5)\n",
             "captures": {
                 "1": {
                     "name": "keyword.operator.logical.pyhgl"
@@ -996,33 +993,6 @@
                 {
                     "name": "meta.class.pyhgl",
                     "begin": "(?x)\n  \\s*(class)\\s+\n    (?=\n      [[:alpha:]_]\\w* \\s* (:|\\()\n    )\n",
-                    "end": "(:)",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "storage.type.class.pyhgl"
-                        }
-                    },
-                    "endCaptures": {
-                        "1": {
-                            "name": "punctuation.section.class.begin.pyhgl"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#class-name"
-                        },
-                        {
-                            "include": "#class-inheritance"
-                        }
-                    ]
-                }
-            ]
-        },
-        "bundle-declaration": {
-            "patterns": [
-                {
-                    "name": "meta.class.pyhgl",
-                    "begin": "(?x)\n  \\s*(bundle)\\s+\n    (?=\n      [[:alpha:]_]\\w* \\s* (:|\\()\n    )\n",
                     "end": "(:)",
                     "beginCaptures": {
                         "1": {
@@ -1842,16 +1812,11 @@
             "patterns": [
                 {
                     "name": "invalid.illegal.operator.pyhgl",
-                    "match": "&&|\\|\\||--|\\+\\+"
+                    "match": "--"
                 },
                 {
                     "name": "invalid.illegal.operator.pyhgl",
                     "match": "[?$]"
-                },
-                {
-                    "name": "invalid.illegal.operator.pyhgl",
-                    "comment": "We don't want `!` to flash when we're typing `!=`",
-                    "match": "!\\b"
                 }
             ]
         },
