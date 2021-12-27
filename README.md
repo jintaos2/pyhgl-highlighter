@@ -13,5 +13,8 @@ a sligntly modified version of generated json from [MagicPython](https://github.
 
 Initial release 
  
+### 0.1.2 
+
+changes of grammar 
 
  
