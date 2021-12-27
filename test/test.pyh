@@ -51,7 +51,7 @@ def mylogic(sel, a, b) -> Signal:
     return ret
 
 
-module mymodule(width, *args):
+@module mymodule(width, *args):
     io = IO(Bundle(
         a = Input(UInt("4'b0010")),
         b = Input(UInt("4'b0100")),
@@ -142,4 +142,11 @@ print(-2)
 !! fd
 !adskfl
 
+@conf TOP(self):
+    x = 2 
+    y = 2
+xxx _cat(a,b): 
 
+!def*
+' def '
+# def 

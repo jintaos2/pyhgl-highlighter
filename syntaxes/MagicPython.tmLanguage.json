@@ -29,9 +29,6 @@
                     "include": "#class-declaration"
                 },
                 {
-                    "include": "#module-declaration"
-                },
-                {
                     "include": "#function-declaration"
                 },
                 {
@@ -1015,33 +1012,6 @@
                 }
             ]
         },
-        "module-declaration": {
-            "patterns": [
-                {
-                    "name": "meta.class.pyhgl",
-                    "begin": "(?x)\n  \\s*(module)\\s+\n    (?=\n      [[:alpha:]_]\\w* \\s* (:|\\()\n    )\n",
-                    "end": "(:)",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "storage.type.class.pyhgl"
-                        }
-                    },
-                    "endCaptures": {
-                        "1": {
-                            "name": "punctuation.section.class.begin.pyhgl"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#class-name"
-                        },
-                        {
-                            "include": "#class-inheritance"
-                        }
-                    ]
-                }
-            ]
-        },
         "class-name": {
             "patterns": [
                 {
@@ -1276,7 +1246,7 @@
         },
         "function-declaration": {
             "name": "meta.function.pyhgl",
-            "begin": "(?x)\n  \\s*\n  (?:\\b(async) \\s+)? \\b(def)\\s+\n    (?=\n      [[:alpha:]_][[:word:]]* \\s* \\(\n    )\n",
+            "begin": "(?x)\n  \\s*\n  (?:\\b(async) \\s+)? (def|@\\w+)\\s+\n    (?=\n      [[:alpha:]_][[:word:]]* \\s* \\(\n    )\n",
             "end": "(:|(?=[#'\"\\n]))",
             "beginCaptures": {
                 "1": {
@@ -1755,7 +1725,7 @@
         },
         "magic-variable-names": {
             "comment": "magic variables which a class/module may have.",
-            "match": "(?x)\n  \\b(\n    __(?:\n      all | bases | builtins | class | class_getitem | code | debug\n      | defaults | dict | doc | file | func | kwdefaults | members\n      | metaclass | methods | module | mro | mro_entries | name\n      | qualname | post_init | self | signature | slots | subclasses\n      | version | weakref | wrapped | annotations | classcell\n      | spec | path | package | future | traceback\n    )__\n  )\\b\n",
+            "match": "(?x)\n  \\b(\n    __(?:\n      all | bases | builtins | class | class_getitem | code | debug\n      | defaults | dict | doc | file | func | kwdefaults | members\n      | metaclass | methods | mro | mro_entries | name\n      | qualname | post_init | self | signature | slots | subclasses\n      | version | weakref | wrapped | annotations | classcell\n      | spec | path | package | future | traceback\n    )__\n  )\\b\n",
             "captures": {
                 "1": {
                     "name": "support.variable.magic.pyhgl"
