@@ -150,3 +150,9 @@ xxx _cat(a,b):
 !def*
 ' def '
 # def  
+
+a.b.c.d()
+
+a or b or c 
+
+a <== b <- c ::= d

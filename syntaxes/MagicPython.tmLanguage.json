@@ -32,6 +32,9 @@
                     "include": "#function-declaration"
                 },
                 {
+                    "include": "#hglfunction-declaration"
+                },
+                {
                     "include": "#generator"
                 },
                 {
@@ -544,7 +547,7 @@
         },
         "assignment-operator": {
             "name": "keyword.operator.assignment.pyhgl",
-            "match": "(?x)\n    \\.= | <~ | ~> | <~> | <<= | >>= | //= | \\*\\*=\n    | \\+= | -= | /= | @=\n    | \\*= | %= | ~= | \\^= | &= | \\|=\n    | =(?!=)\n"
+            "match": "(?x)\n    \\.= | <~ | ~> | <~> | <== | <- | ::= | @== | <<= | >>= | //= | \\*\\*=\n    | \\+= | -= | /= | @=\n    | \\*= | %= | ~= | \\^= | &= | \\|=\n    | =(?!=)\n"
         },
         "operator": {
             "match": "(?x)\n    \\b(?<!\\.)\n      (?:\n        (and | or | not | in | is)                         (?# 1)\n        |\n        (for | if | else | await | (?:yield(?:\\s+from)?))  (?# 2)\n      )\n    (?!\\s*:)\\b\n\n    | ( <<< | >>> | && | \\|\\| | \\+\\+ |!| << | >> | & | \\| | \\^ | ~)                          (?# 3)\n\n    | (\\*\\* | \\* | \\+ | - | % | // | / | @)                (?# 4)\n\n    | (!= | == | >= | <= | < | >)                          (?# 5)\n",
@@ -1246,7 +1249,7 @@
         },
         "function-declaration": {
             "name": "meta.function.pyhgl",
-            "begin": "(?x)\n  \\s*\n  (?:\\b(async) \\s+)? (def|@\\w+)\\s+\n    (?=\n      [[:alpha:]_][[:word:]]* \\s* \\(\n    )\n",
+            "begin": "(?x)\n  \\s*\n  (?:\\b(async) \\s+)? (def)\\s+\n    (?=\n      [[:alpha:]_][[:word:]]* \\s* \\(\n    )\n",
             "end": "(:|(?=[#'\"\\n]))",
             "beginCaptures": {
                 "1": {
@@ -1273,6 +1276,49 @@
                 },
                 {
                     "include": "#return-annotation"
+                }
+            ]
+        },
+        "hglfunction-declaration": {
+            "name": "meta.function.pyhgl",
+            "begin": "(?x)\n  \\s*\n  (@\\w+)\\s+\n    (?=\n      [[:alpha:]_][[:word:]]* \\s* \\(\n    )\n",
+            "end": "(:|(?=[#'\"\\n]))",
+            "beginCaptures": {
+                "1": {
+                    "name": "storage.type.function.pyhgl"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "punctuation.section.function.begin.pyhgl"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#hglfunction-def-name"
+                },
+                {
+                    "include": "#parameters"
+                },
+                {
+                    "include": "#line-continuation"
+                },
+                {
+                    "include": "#return-annotation"
+                }
+            ]
+        },
+        "hglfunction-def-name": {
+            "patterns": [
+                {
+                    "include": "#illegal-object-name"
+                },
+                {
+                    "include": "#builtin-possible-callables"
+                },
+                {
+                    "name": "entity.name.type.class.pyhgl",
+                    "match": "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n"
                 }
             ]
         },
@@ -1601,7 +1647,7 @@
                 },
                 {
                     "comment": "Some color schemas support meta.function-call.generic scope",
-                    "name": "meta.function-call.generic.pyhgl",
+                    "name": "entity.name.function.pyhgl",
                     "match": "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n"
                 }
             ]
