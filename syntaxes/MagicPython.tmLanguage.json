@@ -264,7 +264,7 @@
                 },
                 {
                     "name": "keyword.control.flow.pyhgl",
-                    "match": "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | when | elsewhen | otherwise | priority_case | parallel_case | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
+                    "match": "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | when | elsewhen | otherwise | priority | parallel | case | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
                 },
                 {
                     "name": "storage.modifier.declaration.pyhgl",

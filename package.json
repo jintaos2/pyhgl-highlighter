@@ -2,7 +2,7 @@
     "name": "pyhgl-highlighter",
     "displayName": "pyhgl-highlighter",
     "description": "Syntax highlighter for PyHGL Language",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "license": "MIT",
     "publisher": "jintaos2",
     "engines": {

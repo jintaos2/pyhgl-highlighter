@@ -30,16 +30,35 @@ def state_t(a,b,c,d):...
 print(state_t) 
 
 
-priority_case('priority_case0000'):
-    '1111': ... 
-    ...: ... 
-parallel_case('parallel_case0000'):
-    ('11','000'): ... 
-    [('11','000'),'xxx']: 
-        priority_case('parallel_case1111'):
-            '1111': ... 
-            ...: ... 
+priority ('priority_case0000'):
+    case '1111': ... 
+    case ...: ... 
+parallel ('parallel_case0000'):
+    case ('11','000'): ... 
+    case [('11','000'),'xxx']: 
+        priority('parallel_case1111'):
+            case '1111': ... 
+            case ...: ... 
 
+when UInt('1101'):
+    p() 
+    when UInt('0000'):
+        p()
+        priority UInt('0001'):
+            case '11': p()  
+            case '111': p()
+            case ...: p() 
+    elsewhen UInt('1100'):
+        p()
+    otherwise:
+        p()
+        parallel UInt('1111'):
+            case [('??','11'), ('11','1?')]:
+                p()
+            case ('1', '00', '1'):
+                p()
+            case ...:
+                p()
 
 config.logger.info("----------------------- Module test:")
 
