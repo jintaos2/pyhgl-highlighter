@@ -174,4 +174,25 @@ a.b.c.d()
 
 a or b or c 
 
-a <== b <- c ::= d
+a <== b <- c ::= d 
+
+
+
+
+@module Top_A(B): 
+    X = Top_A_X()
+    A_out = Output(Reg(UInt(Conf.width1)))
+    io = [A_out]
+    A_out <<= X.out & B.x1.c
+
+@module Top_A_X:
+    x = UInt(5, Conf.width)
+    y = UInt(5, Conf.width1)
+    z = x & y 
+    out = ~ z
+
+@module Top_B:
+    x1 = Top_B_X()
+    x2 = Top_B_X()
+    
+    x1.b <<= x2.b
